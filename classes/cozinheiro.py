@@ -3,13 +3,14 @@ class Cozinheiro:
     def __init__(self):
         self.pedido = None  # Nenhum pedido inicialmente
         self.tempo_ocioso = 0
+        self.nao_esta_trabalhando = False
         self.concluidos = 0
         self.pk = Cozinheiro.contador_pk
         Cozinheiro.contador_pk += 1
         
     def esta_ocioso(self):
-        if self.pedido is None:
-            self.tempo_ocioso += 1
+        if self.pedido is None and self.nao_esta_trabalhando == True:
+            self.tempo_ocioso += 1 #TODO Recortar entre a linha 12 e 15 e colocar no metodo trabalhar()
         else:
             self.tempo_ocioso = 0
         return self.pedido is None
@@ -18,6 +19,7 @@ class Cozinheiro:
         self.pedido = pedido
 
     def trabalhar(self):
+        self.nao_esta_trabalhando = True
         if self.pedido:
             self.pedido.duracao -= 1
             if self.pedido.duracao <= 0:
@@ -25,6 +27,7 @@ class Cozinheiro:
                 self.pedido = None
                 self.concluidos += 1
                 return pedido_concluido, True  # Pedido finalizado
+        
         return None, False  # Nenhum pedido finalizado
 
 

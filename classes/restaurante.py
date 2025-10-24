@@ -1,5 +1,6 @@
 from classes.pedidos import Pedido
 from classes.cozinheiro import Cozinheiro
+from utils.utils import Utils
 
 class Restaurante:
     def __init__(self, qtd_cozinheiros, limite_pedidos):
@@ -70,6 +71,7 @@ class Restaurante:
 
         # Distribui pedidos para cozinheiros ociosos
         prioritarios_alocados = 0
+        self.inicia_trabalho = True
         for cozinheiro in self.cozinheiros:
             if cozinheiro.esta_ocioso():
                 # Até 2 prioritários por turno se houver ambos os tipos
@@ -108,26 +110,30 @@ class Restaurante:
         print(f"   Pedidos rejeitados: {self.recusados}\n")
         print(f"   Pedidos na fila: {fila_total}")
     
-    def relatorio(self):
+    def estatisticas(self):
+        Utils.clear_screen()
         print("\n=== Estatísticas Finais ===\n")
         print("." + ("-" * 67) + ".")
         print(f"| {'':<22} | {'TOTAL':<10} | {'NORMAL':<12} | {'PRIORITÁRIO':<12} |")
-        print("|" + ("-" * 67) + "|")
+        print("|" + ("-" * 24) + "|" + ("-" * 12) + "|" + ("-" * 14) + "|" + ("-" * 14) + "|")
 
         # Linhas da tabela principal
         print(f"| {'Pedidos recebidos':<22} | {self.total_geral:<10} | {self.total_normal:<12} | {self.total_prioritario:<12} |")
+        print("|" + ("-" * 24) + "|" + ("-" * 12) + "|" + ("-" * 14) + "|" + ("-" * 14) + "|")
         print(f"| {'Pedidos rejeitados':<22} | {self.rejeitados_geral:<10} | {self.rejeitados_normal:<12} | {self.rejeitados_prioritario:<12} |")
+        print("|" + ("-" * 24) + "|" + ("-" * 12) + "|" + ("-" * 14) + "|" + ("-" * 14) + "|")
         print(f"| {'Pedidos concluídos':<22} | {self.concluidos_geral:<10} | {self.concluidos_normal:<12} | {self.concluidos_prioritario:<12} |")
-        print("'" + ("-" * 67) + "'")
+        print("|" + ("_" * 24) + "|" + ("_" * 12) + "|" + ("_" * 14) + "|" + ("_" * 14) + "|")
+
 
         # Segunda tabela: Cozinheiros
         print()
         print("." + ("-" * 67) + ".")
         print(f"| {'Cozinheiro':<15} | {'Tempo ocioso':<20} | {'Pedidos concluídos':<24} |")
-        print("|" + ("-" * 67) + "|")
         for c in self.cozinheiros:
+            print("|" + ("-" * 17) + "|" + ("-" * 22) + "|" + ("-" * 26) + "|")
             print(f"| {c.pk:<15} | {c.tempo_ocioso:<20} | {c.concluidos:<24} |")
-        print("'" + ("-" * 67) + "'")
+        print("|" + ("_" * 17) + "|" + ("_" * 22) + "|" + ("_" * 26) + "|")
 
         # Descobrir o cozinheiro mais ativo (sem lambda)
         mais_ativo = None
