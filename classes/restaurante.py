@@ -126,7 +126,6 @@ class Restaurante:
         print("|" + ("_" * 24) + "|" + ("_" * 12) + "|" + ("_" * 14) + "|" + ("_" * 14) + "|")
 
 
-        # Segunda tabela: Cozinheiros
         print()
         print("." + ("-" * 67) + ".")
         print(f"| {'Cozinheiro':<15} | {'Tempo ocioso':<20} | {'Pedidos concluídos':<24} |")
@@ -135,7 +134,6 @@ class Restaurante:
             print(f"| {c.pk:<15} | {c.tempo_ocioso:<20} | {c.concluidos:<24} |")
         print("|" + ("_" * 17) + "|" + ("_" * 22) + "|" + ("_" * 26) + "|")
 
-        # Descobrir o cozinheiro mais ativo (sem lambda)
         mais_ativo = None
         mais_concluidos = -1
         for c in self.cozinheiros:

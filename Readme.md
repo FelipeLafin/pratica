@@ -7,9 +7,15 @@ Projeto começa pela execução do arquivo:
 *main.py*
 
 # Execução pelo terminal
-Abra o projeto e inicie um novo terminal com o seguinte comando:
+## Rodando o programa:
+Abra o projeto e inicie um novo terminal com o seguinte comando para rodar o PROGRAMA:
 ```
 python main.py
+```
+## Rodando os testes:
+Abra o projeto e inicie um novo terminal com o seguinte comando para rodar os TESTES:
+```
+python -m unittest discover -s tests
 ```
 
 ## Participantes:
