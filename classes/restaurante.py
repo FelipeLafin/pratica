@@ -135,8 +135,15 @@ class Restaurante:
         print("|" + ("_" * 17) + "|" + ("_" * 22) + "|" + ("_" * 26) + "|")
 
         mais_ativo = None
-        mais_concluidos = -1
+        mais_concluidos = -1 # Tem o valor negativo para poder "entrar" no if
         for c in self.cozinheiros:
+            """
+            Para cada cozinheiro ele vai verificar se o numero de pedidos concluidos pelo
+            cozinheiro fulano é maior que o primeiro valor dos mais_concluidos e aplica o valor
+            do concluido para mais concluido e seu respectivo cozinheiro, logo tem-se qual cozinheiro
+            atendeu mais pedidos :)
+
+            """
             if c.concluidos > mais_concluidos:
                 mais_concluidos = c.concluidos
                 mais_ativo = c.pk

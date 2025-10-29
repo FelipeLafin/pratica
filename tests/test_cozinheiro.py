@@ -17,7 +17,7 @@ class TestCozinheiro(unittest.TestCase):
         self.assertFalse(self.cozinheiro.esta_ocioso())
 
     def test_trabalhar(self):
-        #"Simula o trabalho até a conclusão de um pedido
+        #Simula o trabalho até a conclusão de um pedido
         pedido = Pedido(duracao=1)
         self.cozinheiro.atribuir_pedido(pedido)
         _, finalizado = self.cozinheiro.trabalhar()

@@ -10,7 +10,7 @@ class Cozinheiro:
         
     def esta_ocioso(self):
         if self.pedido is None and self.nao_esta_trabalhando == True:
-            self.tempo_ocioso += 1 #TODO Recortar entre a linha 12 e 15 e colocar no metodo trabalhar()
+            self.tempo_ocioso += 1
         else:
             self.tempo_ocioso = 0
         return self.pedido is None
@@ -32,4 +32,7 @@ class Cozinheiro:
 
 
     def tempo_restante(self):
-        return 0 if self.esta_ocioso() else self.pedido.duracao
+        if self.esta_ocioso():
+            return 0
+        else:
+            return self.pedido.duracao

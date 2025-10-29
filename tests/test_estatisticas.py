@@ -26,5 +26,7 @@ class TestEstatisticas(unittest.TestCase):
 
     def test_soma_concluidos_total(self):
         #Verifica se o total de concluídos é a soma dos cozinheiros
-        total = sum(c.concluidos for c in self.r.cozinheiros)
+        total = 0
+        for c in self.r.cozinheiros:
+            total += c.concluidos
         self.assertEqual(total, 8)
