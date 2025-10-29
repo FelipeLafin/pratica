@@ -18,5 +18,5 @@ Abra o projeto e inicie um novo terminal com o seguinte comando para rodar os TE
 python -m unittest discover -s tests
 ```
 
-## Participantes:
- - Felipe, Lívia e Fábio
+## Link de onde dados do unittest foram estudados:
+[unittest](https://docs.python.org/3/library/unittest.html)
